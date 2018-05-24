@@ -10,8 +10,6 @@ class AircrackNg < Formula
     sha256 "d7616bdd95c9bb230f1fa582819bd001a527e829af4739812f2984623e3a23cf" => :el_capitan
   end
 
-  option "with-experimental", "Build with experimental tools (tkiptun-ng, easside-ng, buddy-ng and wesside-ng)."
-
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
@@ -25,14 +23,10 @@ class AircrackNg < Formula
   patch :DATA
 
   def install
-    args = %W[
-      --disable-silent-rules
-      --disable-dependency-tracking
-      --prefix=#{prefix}
-    ]
-    args << "--with-experimental" if build.with? "experimental"
-
-    system "./autogen.sh", *args
+    system "./autogen.sh", "--disable-silent-rules",
+                           "--disable-dependency-tracking",
+                           "--prefix=#{prefix}",
+                           "--with-experimental"
     system "make", "install"
   end
 
