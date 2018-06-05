@@ -1,16 +1,17 @@
 class Lmod < Formula
   desc "Lua-based environment modules system to modify PATH variable"
   homepage "https://www.tacc.utexas.edu/research-development/tacc-projects/lmod"
-  url "https://github.com/TACC/Lmod/archive/7.7.30.tar.gz"
-  sha256 "fce9ad15a0946011d116dd0b8aaf5df2d85c6484c9d562c0d3d53fa3c1a0bfc1"
+  url "https://github.com/TACC/Lmod/archive/7.7.34.tar.gz"
+  sha256 "415f7c9bded15860ac4ecea813c4445c4b3229c9667f70c9b8214f935d53082d"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "a43f6fc2254f804d6434d5671c465f918a7bff3e621a3501f45a0e2214d8c9de" => :high_sierra
-    sha256 "725e28ace034e46028e263720916e2e9049bcce06b3fb71d6d1db55ac9e25b6f" => :sierra
-    sha256 "61d577eac977680cfa05e0737d5a889f8113878024af17156b1390e21605c256" => :el_capitan
+    sha256 "9e450e3e7d31a4e65517a23cb788188e5ad2acb6077172c924e9b85e105ead26" => :high_sierra
+    sha256 "d6570e4dfd7f915341264dd1e0638b982e6bcca99dd8759f08cda6183ea8330b" => :sierra
+    sha256 "6eaaee6b26871e6fd9c7a20448939a1e93c0827e8c6d2e506fb1bde597ba156c" => :el_capitan
   end
 
+  depends_on "pkg-config" => :build
   depends_on "lua"
 
   resource "luafilesystem" do

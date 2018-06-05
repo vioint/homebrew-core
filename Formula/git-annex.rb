@@ -5,14 +5,14 @@ class GitAnnex < Formula
 
   desc "Manage files with git without checking in file contents"
   homepage "https://git-annex.branchable.com/"
-  url "https://hackage.haskell.org/package/git-annex-6.20180427/git-annex-6.20180427.tar.gz"
-  sha256 "bae55c449a1f9a12c8af7846ef8ebae9f692d9b8ea0c9535a0b2c2322b584d5e"
+  url "https://hackage.haskell.org/package/git-annex-6.20180529/git-annex-6.20180529.tar.gz"
+  sha256 "a5ebeeef3a2a1c71e08592fed6ac149a3cda1c397bad8c1413f40d9a3da9a0e7"
   head "git://git-annex.branchable.com/"
 
   bottle do
-    sha256 "dbd01f8591f0c60a7c89c16add42e99f22cda876f974a352f113fd703bf75760" => :high_sierra
-    sha256 "3e3dc15b3b61c6cde7dbacf3acbff2862208c34551d7064e6179a0458f927fba" => :sierra
-    sha256 "914b7407d65237e90670060a95099fb3d31c35458e283ce6f329951e308c2d30" => :el_capitan
+    sha256 "16dcb6a018708fc1ff101413fdb0c45c29a9f24bed092644b6cb46576d8f1d2e" => :high_sierra
+    sha256 "ecedb2f313c9bdba1ff4ff17907d3b5f3004668a613c01c92398e90e05046835" => :sierra
+    sha256 "be980db5477ced5a9b6a90180c4d748c230d0f5e51bb30a3dd9db00dcb49f210" => :el_capitan
   end
 
   option "with-git-union-merge", "Build the git-union-merge tool"
@@ -27,6 +27,8 @@ class GitAnnex < Formula
 
   def install
     # Reported 28 Feb 2018 to aws upstream https://github.com/aristidb/aws/issues/244
+    # This is already resolved in aws 0.20 but we can't move to 0.20 until
+    # esqueleto 2.6.0 ships. See https://github.com/bitemyapp/esqueleto/issues/88
     install_cabal_package "--constraint", "http-conduit<2.3",
                           :using => ["alex", "happy", "c2hs"],
                           :flags => ["s3", "webapp"] do

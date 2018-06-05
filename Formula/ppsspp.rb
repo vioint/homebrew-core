@@ -1,27 +1,16 @@
 class Ppsspp < Formula
   desc "PlayStation Portable emulator"
   homepage "https://ppsspp.org/"
-  revision 1
+  url "https://github.com/hrydgard/ppsspp.git",
+      :tag => "v1.6.2",
+      :revision => "00e5da2c35639db3a485528396bce4436ea44467"
   head "https://github.com/hrydgard/ppsspp.git"
-
-  stable do
-    url "https://github.com/hrydgard/ppsspp.git",
-        :tag => "v1.5.4",
-        :revision => "a1e74d0d4f89ba3fa2d4fe64bac7a0fa16fc146f"
-
-    # Remove for > 1.5.4
-    # Upstream commit from 22 Apr 2018: "Fix build with ffmpeg 4.0"
-    patch do
-      url "https://github.com/hrydgard/ppsspp/commit/70c54a7d1ab15c0cf84a205b944db7e0339242e0.diff?full_index=1"
-      sha256 "ed7401010e1f1e222bfbb0f1b5321821ce8b780a6781a7928397a09d8807fcb7"
-    end
-  end
 
   bottle do
     cellar :any
-    sha256 "188fba0108fb2399d66a6339716096d5ff44267fec831a2d617f484a0cfb7dd8" => :high_sierra
-    sha256 "7d1ca5e3f63fa206e65f529ef35c7cdb8763fdab849653750ead94d9cbd044c1" => :sierra
-    sha256 "3b0923d51f0ca7f5552eb974e9c438aecce0e5724dda9fc358bedc4229ba7575" => :el_capitan
+    sha256 "2700cf1ad79f686dab67c9828fdf5e8b8046bf299f409fafccade2e577001289" => :high_sierra
+    sha256 "0a84024acc8cc8f8c1d6e73ed1afb6cb099a9c52cc69cef925762a2dee89949a" => :sierra
+    sha256 "a9090b51f4fd4126e91202550fc9c77e9dad62011769a79c2b01e5b472500447" => :el_capitan
   end
 
   depends_on "cmake" => :build

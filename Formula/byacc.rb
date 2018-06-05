@@ -1,15 +1,14 @@
 class Byacc < Formula
   desc "(Arguably) the best yacc variant"
   homepage "https://invisible-island.net/byacc/"
-  url "https://invisible-mirror.net/archives/byacc/byacc-20170709.tgz"
-  sha256 "27cf801985dc6082b8732522588a7b64377dd3df841d584ba6150bc86d78d9eb"
+  url "https://invisible-mirror.net/archives/byacc/byacc-20180525.tgz"
+  sha256 "129b8d8be35c2cecb89e4ef434dc512402c0243f485334c5733ddf1e267c2de6"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "0c4e9c0c2acf0ef66467a06c2bb643b082a7822458aa983ea93058638f9a2cc8" => :high_sierra
-    sha256 "327f52ed3680be5fac0ec1a1ed0f9974e3c9ff9e9b789b9488b8f5484d28d373" => :sierra
-    sha256 "b1f0b4aeae53bac5aa8decd17304144abdce70000524f98aec054fa9ceab4f80" => :el_capitan
-    sha256 "18390d8b25137a7a9fd34eb0e1510ba23864e94d00ead35d9dbf9a0fa47fb55c" => :yosemite
+    sha256 "f58b641379028ef74139e38d8f1e69fe822de4a2d7730e444029938006f10c86" => :high_sierra
+    sha256 "1a5be8985b2b869d5fe9959da4f453966c8aacb2c40a36abf8e0b8c84ec3ec50" => :sierra
+    sha256 "a0061f52669ee96a39ecdd767b57465e041928a05f59d72a663a89051aa71faa" => :el_capitan
   end
 
   def install

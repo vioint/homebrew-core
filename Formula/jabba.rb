@@ -1,15 +1,15 @@
 class Jabba < Formula
   desc "Cross-platform Java Version Manager"
   homepage "https://github.com/shyiko/jabba"
-  url "https://github.com/shyiko/jabba/archive/0.9.6.tar.gz"
-  sha256 "48122c4b2c7f14bd078d16cb66977acdcb441c5a9a3c4062b4102838106cb8fc"
+  url "https://github.com/shyiko/jabba/archive/0.10.1.tar.gz"
+  sha256 "059d5f14a23eba8f3cedf047c99489173fe52fe9bda6484e4000afc9cb7dfb0a"
   head "https://github.com/shyiko/jabba.git"
 
   bottle do
     cellar :any_skip_relocation
-    sha256 "41910246c55a24183c94dc7da71aa93675393b5d07926679afe159d429419d00" => :high_sierra
-    sha256 "0167b3f65ed2b8407b2b2a94c6f275936d5cbcc342efde19038238d40c9b24e7" => :sierra
-    sha256 "e1e896039ff581ebf09ebc50c2da55b281021f54563517f1caaeb0a56b2debb3" => :el_capitan
+    sha256 "9da8b51ef97517e7f9db495a650bb8b41a330130e3a989221d00bbb4a81d30b5" => :high_sierra
+    sha256 "e257449c7740e1fa33bd30f005804cda89b50a8df4401887eed3b4abcd98783d" => :sierra
+    sha256 "3a8fbb3a2ac28a91ad50c1391b9f637a8877d89acc2eeabaa0ec79eb6a2bda2b" => :el_capitan
   end
 
   depends_on "go" => :build

@@ -1,14 +1,14 @@
 class Node < Formula
   desc "Platform built on V8 to build network applications"
   homepage "https://nodejs.org/"
-  url "https://nodejs.org/dist/v10.0.0/node-v10.0.0.tar.xz"
-  sha256 "e239109020755db8a58e6bcb8b9375439e31cf3bbe92d0670a320a47a4e8ab50"
+  url "https://nodejs.org/dist/v10.3.0/node-v10.3.0.tar.xz"
+  sha256 "cb90e9bde8e655eeb152ebdbe1b72e7d2443e3ae2d5f9ac4acd69e7c22671f31"
   head "https://github.com/nodejs/node.git"
 
   bottle do
-    sha256 "6413fac659d9571e07eaef5cba9a2b150e04c6114984fa4ab39b05733065469b" => :high_sierra
-    sha256 "1de8f4c9ebeab4365dc1a26c70565ea8141784e355bc9368fe366984715f51b3" => :sierra
-    sha256 "6343a8becdc0fbd92e7db5aab2075f6513ddbb2f1919394f8c3da1fa30597c2f" => :el_capitan
+    sha256 "9958f3f4253cefc51b75982feabf7035c9774f0d293209ca83096134033e2ec8" => :high_sierra
+    sha256 "49965a08da0c694b4107d295886f37a8dd63f0fbf94051272af07e885c9f8a31" => :sierra
+    sha256 "fd83a1d3b9a9e20ebfe4b64f279f04b34b993e3660b6234c3a5ed7fdfb802343" => :el_capitan
   end
 
   option "with-debug", "Build with debugger hooks"
@@ -36,8 +36,8 @@ class Node < Formula
   # We track major/minor from upstream Node releases.
   # We will accept *important* npm patch releases when necessary.
   resource "npm" do
-    url "https://registry.npmjs.org/npm/-/npm-5.6.0.tgz"
-    sha256 "b1f0de3767136c1d7b4b0f10e6eb2fb3397e2fe11e4c9cddcd0030ad1af9eddd"
+    url "https://registry.npmjs.org/npm/-/npm-6.1.0.tgz"
+    sha256 "be8bb5fdb52e5af8a62988ad32f51c688d1327f62412c4410b30c29c8d66a85f"
   end
 
   def install

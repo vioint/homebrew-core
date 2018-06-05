@@ -1,39 +1,26 @@
 class MongoCDriver < Formula
   desc "C driver for MongoDB"
   homepage "https://github.com/mongodb/mongo-c-driver"
-  url "https://github.com/mongodb/mongo-c-driver/releases/download/1.9.5/mongo-c-driver-1.9.5.tar.gz"
-  sha256 "4a4bd0b0375450250a3da50c050b84b9ba8950ce32e16555714e75ebae0b8019"
+  url "https://github.com/mongodb/mongo-c-driver/releases/download/1.10.1/mongo-c-driver-1.10.1.tar.gz"
+  sha256 "630e83bfc97114a9936f0b6871bfd593b538839caf1d3f93c8038148d1b9a4d6"
+  head "https://github.com/mongodb/mongo-c-driver.git"
 
   bottle do
     cellar :any
-    sha256 "593189006ea209f85d5abe47d202cf00a1372fa7fe940fb520dfd93034233a96" => :high_sierra
-    sha256 "2f38f204bd511a0950b6837e444065415bf3f1f38e30e233f4cf1457819caf73" => :sierra
-    sha256 "fb9688c0c130589d978caf63b4cc9943d2c288a0a3ee1240a4601ad243127037" => :el_capitan
+    sha256 "e757c76b5898031b331888c420a2bbad1a31da383af2a6eb0de4d2e97e20b780" => :high_sierra
+    sha256 "50e03b60589a0ce89a7431640b3d0f1e0a28ebb4043ca46d2fc81f0720a2cf1a" => :sierra
+    sha256 "c0c0a96e74e6d5f67e8cbc626918bf6805dcdaf8f9ace5cb3b6b9d6ddb81cf68" => :el_capitan
   end
 
-  depends_on "autoconf" => :build
-  depends_on "automake" => :build
-  depends_on "libtool" => :build
+  depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "sphinx-doc" => :build
 
   def install
-    system "autoreconf", "-fiv"
-
-    args = %W[
-      --disable-debug
-      --disable-dependency-tracking
-      --disable-silent-rules
-      --prefix=#{prefix}
-      --enable-man-pages
-      --with-libbson=bundled
-      --enable-ssl=darwin
-    ]
-
-    system "./configure", *args
+    system "cmake", ".", *std_cmake_args
     system "make", "install"
     (pkgshare/"libbson").install "src/libbson/examples"
-    (pkgshare/"mongoc").install "examples"
+    (pkgshare/"libmongoc").install "src/libmongoc/examples"
   end
 
   test do
@@ -42,7 +29,7 @@ class MongoCDriver < Formula
     (testpath/"test.json").write('{"name": "test"}')
     assert_match "\u0000test\u0000", shell_output("./test test.json")
 
-    system ENV.cc, "-o", "test", pkgshare/"mongoc/examples/mongoc-ping.c",
+    system ENV.cc, "-o", "test", pkgshare/"libmongoc/examples/mongoc-ping.c",
       "-I#{include}/libmongoc-1.0", "-I#{include}/libbson-1.0",
       "-L#{lib}", "-lmongoc-1.0", "-lbson-1.0"
     assert_match "No suitable servers", shell_output("./test mongodb://0.0.0.0 2>&1", 3)
